@@ -1,6 +1,11 @@
 %{
 #include <stdio.h>
+
+int yyerror(char *s);
+int yylex(void);
 %}
+
+
 
 /* declare tokens */
 %token NUMBER
@@ -35,7 +40,9 @@ int main(int argc, char ** argv)
     yyparse();
 }
 
-yyerror(char *s)
+int yyerror(char *s)
 {
     fprintf(stderr, "error: %s\n", s);
+
+    return 0;
 }
